@@ -5,6 +5,7 @@ from typing import Any
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 
 from app.api.deps import get_case_service, require_user
+from app.core.cache import analytics_cache
 from app.core.supabase_auth import CurrentUser
 from app.domain.errors import (
     AnalysisJobNotFound,
@@ -38,13 +39,16 @@ async def list_cases(
 @router.post("/upload", response_model=CaseResponse)
 async def upload_case_document(
     *,
-    _: CurrentUser = Depends(require_user),
+    user: CurrentUser = Depends(require_user),
     service: CaseService = Depends(get_case_service),
     file: UploadFile = File(...),
 ) -> Any:
     """Upload a document to create a new case."""
     try:
-        return {"case": await service.create_case_from_upload(file)}
+        result = await service.create_case_from_upload(file)
+        # Invalidate cached analytics for this user
+        analytics_cache.invalidate(f"cases:{user.id}")
+        return {"case": result}
     except DomainError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -72,12 +76,14 @@ async def get_case(
 async def analyze_case(
     *,
     case_id: str,
-    _: CurrentUser = Depends(require_user),
+    user: CurrentUser = Depends(require_user),
     service: CaseService = Depends(get_case_service),
 ) -> Any:
     """Run the analysis pipeline."""
     try:
         queued = await service.queue_analysis(case_id)
+        # Invalidate cached analytics for this user
+        analytics_cache.invalidate(f"cases:{user.id}")
         return {"case": queued}
     except CaseNotFound as e:
         raise HTTPException(status_code=404, detail=str(e))
