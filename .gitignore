@@ -202,6 +202,10 @@ dist/
 # sftp configuration file
 sftp-config.json
 
+# Frontend shared utilities are source, not Python build output.
+!frontend/src/lib/
+!frontend/src/lib/utils.ts
+
 
 ### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
