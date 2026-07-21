@@ -128,7 +128,7 @@ export function AppSidebar() {
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
                             <Link href="/dashboard">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold shadow-lg">
+                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 text-stone-900 font-bold shadow-lg">
                                     F
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
@@ -248,7 +248,7 @@ export function AppSidebar() {
                                 >
                                     <Avatar className="h-8 w-8 rounded-lg">
                                         <AvatarImage src="/avatars/analyst.jpg" alt="Analyst" />
-                                        <AvatarFallback className="rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white">
+                                        <AvatarFallback className="rounded-lg bg-gradient-to-br from-cyan-500 to-teal-600 text-white">
                                             {userInitials}
                                         </AvatarFallback>
                                     </Avatar>
@@ -270,7 +270,7 @@ export function AppSidebar() {
                                     <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                         <Avatar className="h-8 w-8 rounded-lg">
                                             <AvatarImage src="/avatars/analyst.jpg" alt="Analyst" />
-                                            <AvatarFallback className="rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white">
+                                            <AvatarFallback className="rounded-lg bg-gradient-to-br from-cyan-500 to-teal-600 text-white">
                                                 {userInitials}
                                             </AvatarFallback>
                                         </Avatar>

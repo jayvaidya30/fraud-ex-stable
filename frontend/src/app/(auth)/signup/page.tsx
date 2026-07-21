@@ -60,7 +60,7 @@ export default function SignUpPage() {
             <Card className="w-full max-w-md border-slate-700 bg-slate-800/50 backdrop-blur-xl">
                 <CardHeader className="space-y-1 text-center">
                     <div className="mb-4 flex justify-center">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600">
                             <CheckCircleIcon className="h-6 w-6 text-white" />
                         </div>
                     </div>
@@ -74,7 +74,7 @@ export default function SignUpPage() {
                 <CardFooter className="flex justify-center">
                     <Link
                         href="/login"
-                        className="text-emerald-400 hover:text-emerald-300 hover:underline"
+                        className="text-cyan-400 hover:text-cyan-300 hover:underline"
                     >
                         Back to login
                     </Link>
@@ -87,7 +87,7 @@ export default function SignUpPage() {
         <Card className="w-full max-w-md border-slate-700 bg-slate-800/50 backdrop-blur-xl">
             <CardHeader className="space-y-1 text-center">
                 <div className="mb-4 flex justify-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600">
                         <ShieldCheckIcon className="h-6 w-6 text-white" />
                     </div>
                 </div>
@@ -152,7 +152,7 @@ export default function SignUpPage() {
                 <CardFooter className="flex flex-col gap-4">
                     <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700"
+                        className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700"
                         disabled={loading}
                     >
                         {loading ? (
@@ -168,7 +168,7 @@ export default function SignUpPage() {
                         Already have an account?{" "}
                         <Link
                             href="/login"
-                            className="text-emerald-400 hover:text-emerald-300 hover:underline"
+                            className="text-cyan-400 hover:text-cyan-300 hover:underline"
                         >
                             Sign in
                         </Link>

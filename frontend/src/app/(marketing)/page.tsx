@@ -39,10 +39,10 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 
 /*
- * Palette — "Ink & Ivory"
+ * Palette — "Detection"
  *   ink     #0b0b0d  (warm near-black, dark bands)
  *   ivory   #f4f2ec  (warm off-white, light bands)
- *   accent  amber-400/500 (gold — the single brand spark)
+ *   accent  cyan-400 (#22d3ee) → teal-500 (#14b8a6) — the detection spark
  *   risk viz keeps functional rose / amber / emerald
  */
 const navLinks = [
@@ -59,7 +59,7 @@ export default function LandingPage() {
     const my = useMotionValue(0);
     const sx = useSpring(mx, { stiffness: 120, damping: 30 });
     const sy = useSpring(my, { stiffness: 120, damping: 30 });
-    const spotlight = useMotionTemplate`radial-gradient(600px circle at ${sx}px ${sy}px, rgba(245,158,11,0.10), transparent 60%)`;
+    const spotlight = useMotionTemplate`radial-gradient(600px circle at ${sx}px ${sy}px, rgba(34,211,238,0.10), transparent 60%)`;
 
     const handleMouseMove = (e: React.MouseEvent) => {
         mx.set(e.clientX);
@@ -100,7 +100,7 @@ function Logo({ light = false }: { light?: boolean }) {
             <motion.div
                 whileHover={{ rotate: 8, scale: 1.08 }}
                 transition={{ type: "spring", stiffness: 300, damping: 12 }}
-                className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-300 to-amber-500 text-sm font-bold text-stone-900 shadow-[0_4px_14px_-2px_rgba(245,158,11,0.5)]"
+                className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 text-sm font-bold text-stone-900 shadow-[0_4px_14px_-2px_rgba(20,184,166,0.5)]"
             >
                 F
             </motion.div>
@@ -130,7 +130,7 @@ function LaunchButton({
                 className={cn(
                     "group relative inline-flex items-center gap-2 overflow-hidden rounded-full font-semibold shadow-sm",
                     light
-                        ? "bg-amber-400 text-stone-950 shadow-[0_8px_24px_-6px_rgba(245,158,11,0.6)]"
+                        ? "bg-cyan-400 text-stone-950 shadow-[0_8px_24px_-6px_rgba(20,184,166,0.6)]"
                         : "bg-stone-950 text-white",
                     big ? "px-7 py-3.5 text-base" : "py-2 pl-2 pr-4 text-sm"
                 )}
@@ -189,12 +189,12 @@ function Hero() {
                 className="pointer-events-none absolute inset-0"
                 style={{
                     background:
-                        "radial-gradient(90% 60% at 80% -10%, rgba(245,158,11,0.16), transparent 60%), radial-gradient(70% 50% at 0% 10%, rgba(255,255,255,0.05), transparent 60%)",
+                        "radial-gradient(90% 60% at 80% -10%, rgba(34,211,238,0.16), transparent 60%), radial-gradient(70% 50% at 0% 10%, rgba(255,255,255,0.05), transparent 60%)",
                 }}
             />
             <motion.div
                 aria-hidden
-                className="pointer-events-none absolute -right-40 top-0 size-[560px] rounded-full bg-amber-500/15 blur-[130px]"
+                className="pointer-events-none absolute -right-40 top-0 size-[560px] rounded-full bg-cyan-500/15 blur-[130px]"
                 animate={{ x: [0, -40, 0], y: [0, 40, 0], scale: [1, 1.12, 1] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -220,7 +220,7 @@ function Hero() {
                             className="group relative text-sm font-medium uppercase tracking-wide text-white/60 transition-colors hover:text-white"
                         >
                             {link.label}
-                            <span className="absolute -bottom-1 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover:w-full" />
+                            <span className="absolute -bottom-1 left-0 h-px w-0 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
                         </a>
                     ))}
                 </nav>
@@ -245,7 +245,7 @@ function Hero() {
                         <motion.span
                             animate={{ scale: [1, 1.5, 1], opacity: [1, 0.4, 1] }}
                             transition={{ duration: 1.8, repeat: Infinity }}
-                            className="size-1.5 rounded-full bg-amber-400"
+                            className="size-1.5 rounded-full bg-cyan-400"
                         />
                         Live fraud intelligence
                     </motion.div>
@@ -259,7 +259,7 @@ function Hero() {
                         <RevealLine text="Detect fraud" />
                         <RevealLine
                             text="before it moves."
-                            className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 bg-clip-text text-transparent"
+                            className="bg-gradient-to-r from-cyan-200 via-cyan-400 to-teal-400 bg-clip-text text-transparent"
                         />
                     </motion.h1>
 
@@ -299,7 +299,7 @@ function Hero() {
                         <div className="text-left">
                             <div className="text-2xl font-semibold tracking-tight text-white">
                                 <NumberTicker value={99.2} decimalPlaces={1} className="text-white" />
-                                <span className="text-amber-400">%</span>
+                                <span className="text-cyan-400">%</span>
                             </div>
                             <p className="text-xs text-white/45">Detection precision</p>
                         </div>
@@ -307,7 +307,7 @@ function Hero() {
                         <div className="text-left">
                             <div className="text-2xl font-semibold tracking-tight text-white">
                                 <NumberTicker value={40} className="text-white" />
-                                <span className="text-amber-400">ms</span>
+                                <span className="text-cyan-400">ms</span>
                             </div>
                             <p className="text-xs text-white/45">Median scoring</p>
                         </div>
@@ -383,14 +383,14 @@ function NetworkVisual() {
             {/* Core engine */}
             <div className="relative z-10 flex flex-col items-center justify-center">
                 <motion.span
-                    className="absolute -inset-3 rounded-3xl bg-amber-400/25 blur-xl"
+                    className="absolute -inset-3 rounded-3xl bg-cyan-400/25 blur-xl"
                     animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.08, 1] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <Node
                     ref={core}
                     size="lg"
-                    className="border-none bg-gradient-to-br from-amber-300 to-amber-500 shadow-[0_10px_40px_-8px_rgba(245,158,11,0.6)]"
+                    className="border-none bg-gradient-to-br from-cyan-400 to-teal-500 shadow-[0_10px_40px_-8px_rgba(20,184,166,0.6)]"
                 >
                     <motion.div
                         animate={{ rotate: 360 }}
@@ -437,10 +437,10 @@ function NetworkVisual() {
                 </Node>
             </div>
 
-            {/* Beams: sources -> core (amber) */}
-            <AnimatedBeam containerRef={container} fromRef={s1} toRef={core} curvature={40} duration={4} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#f59e0b" gradientStopColor="#fcd34d" />
-            <AnimatedBeam containerRef={container} fromRef={s2} toRef={core} duration={4} delay={0.6} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#f59e0b" gradientStopColor="#fcd34d" />
-            <AnimatedBeam containerRef={container} fromRef={s3} toRef={core} curvature={-40} duration={4} delay={1.2} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#f59e0b" gradientStopColor="#fcd34d" />
+            {/* Beams: sources -> core (cyan → teal) */}
+            <AnimatedBeam containerRef={container} fromRef={s1} toRef={core} curvature={40} duration={4} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#22d3ee" gradientStopColor="#2dd4bf" />
+            <AnimatedBeam containerRef={container} fromRef={s2} toRef={core} duration={4} delay={0.6} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#22d3ee" gradientStopColor="#2dd4bf" />
+            <AnimatedBeam containerRef={container} fromRef={s3} toRef={core} curvature={-40} duration={4} delay={1.2} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#22d3ee" gradientStopColor="#2dd4bf" />
             {/* Beams: core -> outcomes (semantic) */}
             <AnimatedBeam containerRef={container} fromRef={core} toRef={flagged} curvature={-30} duration={3.5} delay={0.3} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#f43f5e" gradientStopColor="#fb7185" />
             <AnimatedBeam containerRef={container} fromRef={core} toRef={cleared} curvature={30} duration={3.5} delay={0.9} pathColor="#ffffff" pathOpacity={0.08} gradientStartColor="#10b981" gradientStopColor="#34d399" />
@@ -468,7 +468,7 @@ function Showcase() {
                                 key={item}
                                 className="mx-1 flex items-center gap-2 rounded-full border border-stone-200 bg-white px-5 py-2 text-sm font-medium text-stone-700 shadow-sm"
                             >
-                                <SparklesIcon className="size-3.5 text-amber-500" />
+                                <SparklesIcon className="size-3.5 text-cyan-600" />
                                 {item}
                             </div>
                         ))}
@@ -505,7 +505,7 @@ function TiltPreview() {
             </motion.div>
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-x-10 -bottom-6 -z-10 h-24 rounded-full bg-amber-500/20 blur-3xl"
+                className="pointer-events-none absolute inset-x-10 -bottom-6 -z-10 h-24 rounded-full bg-cyan-500/20 blur-3xl"
             />
         </div>
     );
@@ -516,7 +516,7 @@ function DashboardPreview() {
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr]">
             <aside className="hidden flex-col gap-1 bg-[#0b0b0d] p-4 text-stone-300 md:flex">
                 <div className="flex items-center gap-2 px-1 pb-4">
-                    <div className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-300 to-amber-500 text-sm font-bold text-stone-900">
+                    <div className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 text-sm font-bold text-stone-900">
                         F
                     </div>
                     <div className="leading-tight">
@@ -541,7 +541,7 @@ function DashboardPreview() {
                         key={item.label}
                         className={cn(
                             "flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm",
-                            item.active ? "bg-amber-400/10 font-medium text-amber-300" : "text-stone-400"
+                            item.active ? "bg-cyan-400/10 font-medium text-cyan-300" : "text-stone-400"
                         )}
                     >
                         <item.icon className="size-4" />
@@ -557,7 +557,7 @@ function DashboardPreview() {
 
             <div className="bg-white p-6 sm:p-8">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-stone-400">
-                    <ZapIcon className="size-3.5 text-amber-500" />
+                    <ZapIcon className="size-3.5 text-cyan-600" />
                     Total exposure monitored
                 </div>
 
@@ -719,7 +719,7 @@ function LiveStats() {
                     className="pointer-events-none absolute inset-0"
                     style={{
                         background:
-                            "radial-gradient(60% 80% at 50% 0%, rgba(245,158,11,0.12), transparent 60%)",
+                            "radial-gradient(60% 80% at 50% 0%, rgba(34,211,238,0.12), transparent 60%)",
                     }}
                 />
                 <DotPattern
@@ -738,7 +738,7 @@ function LiveStats() {
                         >
                             <div className="text-4xl font-semibold tracking-tight md:text-5xl">
                                 <NumberTicker value={s.value} decimalPlaces={s.dp} className="text-white" />
-                                <span className="text-amber-400">{s.suffix}</span>
+                                <span className="text-cyan-400">{s.suffix}</span>
                             </div>
                             <p className="mt-2 text-sm text-white/45">{s.label}</p>
                         </motion.div>
@@ -803,7 +803,7 @@ function Features() {
                         <motion.div
                             whileHover={{ rotate: -8, scale: 1.08 }}
                             transition={{ type: "spring", stiffness: 300, damping: 12 }}
-                            className="flex size-11 items-center justify-center rounded-xl bg-stone-900 text-amber-300"
+                            className="flex size-11 items-center justify-center rounded-xl bg-stone-900 text-cyan-300"
                         >
                             <f.icon className="size-5" />
                         </motion.div>
@@ -828,7 +828,7 @@ function FinalCta() {
         >
             <motion.div
                 aria-hidden
-                className="pointer-events-none absolute -top-20 left-1/2 size-80 -translate-x-1/2 rounded-full bg-amber-500/20 blur-3xl"
+                className="pointer-events-none absolute -top-20 left-1/2 size-80 -translate-x-1/2 rounded-full bg-cyan-500/20 blur-3xl"
                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -869,7 +869,7 @@ function SiteFooter() {
         <footer className="relative z-10 bg-[#0b0b0d] px-6 pb-10 text-white lg:px-10">
             <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
                 <div className="flex items-center gap-2 text-sm text-white/50">
-                    <div className="flex size-6 items-center justify-center rounded-md bg-gradient-to-br from-amber-300 to-amber-500 text-[11px] font-bold text-stone-900">
+                    <div className="flex size-6 items-center justify-center rounded-md bg-gradient-to-br from-cyan-400 to-teal-500 text-[11px] font-bold text-stone-900">
                         F
                     </div>
                     FraudEx · Intelligence Platform
