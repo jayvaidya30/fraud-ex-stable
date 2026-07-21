@@ -44,7 +44,7 @@ import {
 const mainNavItems = [
     {
         title: "Dashboard",
-        url: "/",
+        url: "/dashboard",
         icon: LayoutDashboardIcon,
     },
     {
@@ -127,7 +127,7 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/">
+                            <Link href="/dashboard">
                                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold shadow-lg">
                                     F
                                 </div>
