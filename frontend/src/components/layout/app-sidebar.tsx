@@ -17,6 +17,7 @@ import {
     LogOutIcon,
 } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
+import { FraudExLogo } from "@/components/brand/logo";
 
 import {
     Sidebar,
@@ -128,9 +129,7 @@ export function AppSidebar() {
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
                             <Link href="/dashboard">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 text-stone-900 font-bold shadow-lg">
-                                    F
-                                </div>
+                                <FraudExLogo inverse size="sm" href={null} showWordmark={false} />
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <span className="truncate font-semibold">FraudEx</span>
                                     <span className="truncate text-xs text-muted-foreground">

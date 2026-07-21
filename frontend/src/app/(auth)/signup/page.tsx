@@ -16,7 +16,8 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { ShieldCheckIcon, Loader2Icon, AlertCircleIcon, CheckCircleIcon } from "lucide-react";
+import { Loader2Icon, AlertCircleIcon, CheckCircleIcon } from "lucide-react";
+import { FraudExLogo } from "@/components/brand/logo";
 
 export default function SignUpPage() {
     const [email, setEmail] = useState("");
@@ -60,9 +61,7 @@ export default function SignUpPage() {
             <Card className="w-full max-w-md border-slate-700 bg-slate-800/50 backdrop-blur-xl">
                 <CardHeader className="space-y-1 text-center">
                     <div className="mb-4 flex justify-center">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600">
-                            <CheckCircleIcon className="h-6 w-6 text-white" />
-                        </div>
+                        <FraudExLogo inverse size="lg" href={null} />
                     </div>
                     <CardTitle className="text-2xl font-bold text-white">
                         Check your email
@@ -87,9 +86,7 @@ export default function SignUpPage() {
         <Card className="w-full max-w-md border-slate-700 bg-slate-800/50 backdrop-blur-xl">
             <CardHeader className="space-y-1 text-center">
                 <div className="mb-4 flex justify-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600">
-                        <ShieldCheckIcon className="h-6 w-6 text-white" />
-                    </div>
+                    <FraudExLogo inverse size="lg" href={null} />
                 </div>
                 <CardTitle className="text-2xl font-bold text-white">
                     Create an account
